@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0a0a0a;
+    --fg: #e0e0e0;
+    --accent: #00ff88;
+    --card-bg: #1a1a1a;
+    --border: #2a2a2a;
+    --hover: #252525;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background-color: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.timeline-section {
+    margin-bottom: 4rem;
+}
+
+.timeline-section h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.section-desc {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.projects-grid.piscine {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-card:hover {
+    background: var(--hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.project-name {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.project-desc {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.piscine .project-card {
+    padding: 1rem;
+}
+
+.piscine .project-name {
+    font-size: 0.9rem;
+}
+
+.cpp-modules {
+    grid-column: span 2;
+}
+
+.cpp-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.cpp-module {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: var(--fg);
+    transition: all 0.2s ease;
+}
+
+.cpp-module:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.cpp-module.in-progress {
+    border-color: #ff8800;
+    color: #ff8800;
+    cursor: default;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid var(--border);
+    color: #666;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid.piscine {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cpp-modules {
+        grid-column: span 1;
+    }
+}
