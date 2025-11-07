@@ -39,17 +39,20 @@ Portfolio personale che presenta i progetti completati durante il percorso alla 
    <a href="CV_Viorica_Gabriela_Hacman.pdf" class="cta-button secondary" download>Download CV</a>
    ```
 
-### Aggiungere i Certificati Coursera
+### Certificati Coursera
 
-1. **Aggiungi i certificati nella cartella `certificates/`**
-   ```bash
-   cp introduction_front_end_meta_certificate.pdf ./certificates/
-   cp c_programming_uc_santa_cruz_certificate.pdf ./certificates/
-   ```
+✅ **I certificati sono già configurati e pronti!**
 
-2. **Opzionale: Collegare i certificati nella landing page**
-   - I certificati sono già menzionati nella sezione "Education & Certifications"
-   - Puoi aggiungere link diretti modificando l'HTML se necessario
+I certificati Coursera sono già nella cartella `certificates/` e collegati nella landing page:
+- `introduction_front_end_meta_certificate.pdf` - Introduction to Front-End Development (Meta)
+- `c_fundamentals_certificate.pdf` - C for Everyone: Programming Fundamentals (UC Santa Cruz)
+
+Ogni certificato ha un pulsante "View Certificate" che apre il PDF in una nuova scheda.
+
+**Per aggiungere nuovi certificati:**
+1. Aggiungi il PDF nella cartella `certificates/`
+2. Modifica `index.html` nella sezione "Education & Certifications"
+3. Aggiungi un nuovo blocco `certificate-item` con il link al PDF
 
 ## Personalizzazione
 
