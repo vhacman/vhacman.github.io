@@ -1,0 +1,10 @@
+DirectoryIndex index.html
+
+# Disable directory browsing
+Options -Indexes
+
+# Enable following symbolic links
+Options +FollowSymLinks
+
+# Set default charset
+AddDefaultCharset UTF-8
