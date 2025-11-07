@@ -19,7 +19,9 @@ Portfolio personale che presenta i progetti completati durante il percorso alla 
 └── subjects/             # PDF dei subject dei progetti
 ```
 
-## Come Aggiungere il CV
+## Come Aggiungere il CV e Certificati
+
+### Aggiungere il CV
 
 1. **Prepara il tuo CV in formato PDF**
    - Nominalo `CV_Viorica_Gabriela_Hacman.pdf` (o un nome simile)
@@ -37,9 +39,17 @@ Portfolio personale che presenta i progetti completati durante il percorso alla 
    <a href="CV_Viorica_Gabriela_Hacman.pdf" class="cta-button secondary" download>Download CV</a>
    ```
 
-4. **Rimuovi o modifica lo script JavaScript**
-   - Puoi rimuovere lo script alla fine di `index.html` che mostra l'alert
-   - Oppure lascialo come promemoria finché non aggiungi il CV
+### Aggiungere i Certificati Coursera
+
+1. **Aggiungi i certificati nella cartella `certificates/`**
+   ```bash
+   cp introduction_front_end_meta_certificate.pdf ./certificates/
+   cp c_programming_uc_santa_cruz_certificate.pdf ./certificates/
+   ```
+
+2. **Opzionale: Collegare i certificati nella landing page**
+   - I certificati sono già menzionati nella sezione "Education & Certifications"
+   - Puoi aggiungere link diretti modificando l'HTML se necessario
 
 ## Personalizzazione
 
