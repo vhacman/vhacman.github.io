@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pipex - 42 Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+        <div class="project-detail">
+            <div class="project-header">
+                <h1 class="project-title">pipex</h1>
+                <p class="project-subtitle">Unix Pipes Recreation</p>
+            </div>
+
+            <div class="project-description">
+                <h3>About This Project</h3>
+                <p>pipex recreates the behavior of the Unix shell pipe mechanism. The project simulates the shell command "< file1 cmd1 | cmd2 > file2", teaching how pipes work at a system level and how processes communicate through file descriptors.</p>
+                <p>The implementation involves process creation with fork(), executing commands with execve(), handling file descriptors, and creating pipes for inter-process communication. It provides deep insights into how Unix systems handle I/O redirection and process communication.</p>
+            </div>
+
+            <div class="skills-section">
+                <h3>Skills Acquired</h3>
+                <ul class="skills-list">
+                    <li>Process creation and management (fork, wait)</li>
+                    <li>Inter-process communication with pipes</li>
+                    <li>File descriptor manipulation and redirection</li>
+                    <li>Command execution with execve()</li>
+                    <li>Environment variables and PATH handling</li>
+                    <li>Error handling in system calls</li>
+                    <li>Understanding of Unix I/O redirection</li>
+                    <li>Parent-child process relationships</li>
+                </ul>
+            </div>
+
+            <div class="pdf-container">
+                <p style="margin-bottom: 1rem; color: #8b6f47;">View project subject PDF</p>
+                <a href="../Pipex.pdf" class="pdf-link" target="_blank">Open PDF</a>
+                <a href="https://github.com/vhacman/pipex" class="github-link" target="_blank">View on GitHub</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
