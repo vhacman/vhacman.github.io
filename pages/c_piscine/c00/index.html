@@ -4,15 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C 00 - 42 Portfolio</title>
-    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #c2a6da;
+            color: #000000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(140, 26, 155, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(91, 197, 195, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(67, 19, 78, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: #8c1a9b;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: #5bc5c3;
+            top: 60%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: #43134e;
+            bottom: -50px;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            background: #b43abc;
+            top: 20%;
+            right: 20%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(10px, 10px) scale(1.02); }
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #00babc;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #43134e, #8c1a9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: #2a082e;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .project-description {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .project-description h3 {
+            font-size: 1.3rem;
+            color: #43134e;
+            margin-bottom: 1rem;
+        }
+
+        .project-description p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #2a082e;
+            margin-bottom: 1rem;
+        }
+
+        .skills-section {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .skills-section h3 {
+            font-size: 1.3rem;
+            color: #43134e;
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            font-size: 0.95rem;
+            color: #2a082e;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .skills-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #8c1a9b;
+        }
+
+        .pdf-container {
+            margin-top: 2rem;
+        }
+
+        .pdf-container p {
+            margin-bottom: 1rem;
+            color: #43134e;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b43abc, #5bc5c3);
+            color: #0a0a0a;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 186, 188, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #010d0d;
+            border: 2px solid #069496;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 186, 188, 0.1);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            position: absolute;
+            bottom: 2rem;
+            color: #444;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 <body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
     <div class="container">
         <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
-                <h1 class="project-title">C 00</h1>
+                <h1>C 00</h1>
                 <p class="project-subtitle">C Piscine - Introduction to C</p>
             </div>
 
@@ -36,10 +275,14 @@
             </div>
 
             <div class="pdf-container">
-                <p style="margin-bottom: 1rem; color: #8b6f47;">View project subject PDF</p>
-                <a href="../../../subjects/c_piscine/c_piscine_c00.pdf" class="pdf-link" target="_blank">Open PDF</a>
+                <p>View project subject PDF</p>
+                <a href="../../../subjects/c_piscine/c_piscine_c00.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
             </div>
         </div>
     </div>
+
+    <footer>
+        &copy; 2025 Viorica Gabriela Hacman
+    </footer>
 </body>
 </html>
