@@ -109,16 +109,31 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(140, 26, 155, 0.3), inset 0 -10px 20px rgba(91, 197, 195, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(140, 26, 155, 0.5), inset 0 -10px 20px rgba(91, 197, 195, 0.3), inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +251,67 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(140, 26, 155, 0.3), inset 0 -10px 20px rgba(91, 197, 195, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(140, 26, 155, 0.5), inset 0 -10px 20px rgba(91, 197, 195, 0.3), inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -252,33 +325,63 @@
         <div class="project-detail">
             <div class="project-header">
                 <h1>CPP Module 01</h1>
-                <p class="project-subtitle">Memory Allocation & References</p>
+                <p class="project-subtitle lang-it">Allocazione di Memoria e Riferimenti</p>
+                <p class="project-subtitle lang-en">Memory Allocation & References</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>CPP Module 01 focuses on memory management in C++, introducing new and delete operators, references, pointers to members, and the differences between stack and heap allocation. This module deepens understanding of how C++ handles memory compared to C's malloc/free.</p>
-                <p>Students learn about reference types, file streams, and switch statements while implementing practical exercises. The module emphasizes proper memory management, understanding when to use pointers vs references, and avoiding memory leaks in C++ programs.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>CPP Module 01 si concentra sulla gestione della memoria in C++, introducendo gli operatori new e delete, i riferimenti, i puntatori a membri e le differenze tra allocazione su stack e heap. Questo modulo approfondisce la comprensione di come il C++ gestisce la memoria rispetto a malloc/free del C.</p>
+                    <p>Gli studenti imparano i tipi riferimento, gli stream per file e le istruzioni switch implementando esercizi pratici. Il modulo enfatizza la corretta gestione della memoria, la comprensione di quando usare puntatori vs riferimenti e l'evitare memory leak nei programmi C++.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>CPP Module 01 focuses on memory management in C++, introducing new and delete operators, references, pointers to members, and the differences between stack and heap allocation. This module deepens understanding of how C++ handles memory compared to C's malloc/free.</p>
+                    <p>Students learn about reference types, file streams, and switch statements while implementing practical exercises. The module emphasizes proper memory management, understanding when to use pointers vs references, and avoiding memory leaks in C++ programs.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Dynamic memory allocation (new/delete)</li>
-                    <li>References vs pointers in C++</li>
-                    <li>Pointers to members (functions and attributes)</li>
-                    <li>Stack vs heap memory allocation</li>
-                    <li>File streams (ifstream, ofstream)</li>
-                    <li>Memory leak prevention in C++</li>
-                    <li>Switch statements and control flow</li>
-                    <li>RAII (Resource Acquisition Is Initialization) basics</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Allocazione dinamica della memoria (new/delete)</li>
+                        <li>Riferimenti vs puntatori in C++</li>
+                        <li>Puntatori a membri (funzioni e attributi)</li>
+                        <li>Allocazione di memoria su stack vs heap</li>
+                        <li>Stream per file (ifstream, ofstream)</li>
+                        <li>Prevenzione dei memory leak in C++</li>
+                        <li>Istruzioni switch e flusso di controllo</li>
+                        <li>Basi di RAII (Resource Acquisition Is Initialization)</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Dynamic memory allocation (new/delete)</li>
+                        <li>References vs pointers in C++</li>
+                        <li>Pointers to members (functions and attributes)</li>
+                        <li>Stack vs heap memory allocation</li>
+                        <li>File streams (ifstream, ofstream)</li>
+                        <li>Memory leak prevention in C++</li>
+                        <li>Switch statements and control flow</li>
+                        <li>RAII (Resource Acquisition Is Initialization) basics</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_4/cpp_modules/CPP01.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/CPP01" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_4/cpp_modules/CPP01.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/CPP01" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>

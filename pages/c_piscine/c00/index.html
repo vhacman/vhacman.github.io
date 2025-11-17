@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,37 +329,64 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>C 00</h1>
-                <p class="project-subtitle">C Piscine - Introduction to C</p>
+                <p class="project-subtitle lang-it">C Piscine - Introduzione al C</p>
+                <p class="project-subtitle lang-en">C Piscine - Introduction to C</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>C 00 marks the beginning of C programming in the Piscine. This project introduces the fundamental concepts of C including functions, basic I/O, loops, and conditional statements. Students write their first C functions and learn about compilation and function prototypes.</p>
-                <p>The exercises progress from simple character printing to more complex number manipulation, teaching the basics of variables, operators, and control structures. It's designed to give a solid foundation in C syntax and logic.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>C 00 segna l'inizio della programmazione in C nella Piscine. Questo progetto introduce i concetti fondamentali del C includendo funzioni, I/O di base, cicli e istruzioni condizionali. Gli studenti scrivono le loro prime funzioni in C e imparano la compilazione e i prototipi delle funzioni.</p>
+                    <p>Gli esercizi progrediscono dalla semplice stampa di caratteri alla manipolazione di numeri più complessa, insegnando le basi di variabili, operatori e strutture di controllo. È progettato per fornire una solida base nella sintassi e logica del C.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>C 00 marks the beginning of C programming in the Piscine. This project introduces the fundamental concepts of C including functions, basic I/O, loops, and conditional statements. Students write their first C functions and learn about compilation and function prototypes.</p>
+                    <p>The exercises progress from simple character printing to more complex number manipulation, teaching the basics of variables, operators, and control structures. It's designed to give a solid foundation in C syntax and logic.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>C syntax fundamentals and function structure</li>
-                    <li>Basic I/O operations (write function)</li>
-                    <li>Variables and data types (int, char)</li>
-                    <li>Loops (while, for) and conditionals (if/else)</li>
-                    <li>Function declarations and definitions</li>
-                    <li>Compilation process and gcc usage</li>
-                    <li>Basic debugging techniques</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Fondamenti della sintassi C e struttura delle funzioni</li>
+                        <li>Operazioni I/O di base (funzione write)</li>
+                        <li>Variabili e tipi di dati (int, char)</li>
+                        <li>Cicli (while, for) e condizionali (if/else)</li>
+                        <li>Dichiarazioni e definizioni di funzioni</li>
+                        <li>Processo di compilazione e uso di gcc</li>
+                        <li>Tecniche di debugging di base</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>C syntax fundamentals and function structure</li>
+                        <li>Basic I/O operations (write function)</li>
+                        <li>Variables and data types (int, char)</li>
+                        <li>Loops (while, for) and conditionals (if/else)</li>
+                        <li>Function declarations and definitions</li>
+                        <li>Compilation process and gcc usage</li>
+                        <li>Basic debugging techniques</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/c_piscine/c_piscine_c00.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/c_piscine/c_piscine_c00.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
             </div>
         </div>
     </div>
@@ -284,5 +394,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

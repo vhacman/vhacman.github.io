@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,37 +329,64 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>C 04</h1>
-                <p class="project-subtitle">C Piscine - Advanced String Operations</p>
+                <p class="project-subtitle lang-it">C Piscine - Operazioni Avanzate sulle Stringhe</p>
+                <p class="project-subtitle lang-en">C Piscine - Advanced String Operations</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>C 04 introduces more complex string operations including number-to-string and string-to-number conversions. Students implement functions like atoi (ASCII to integer) and understand how to parse numeric strings and convert them to integer values.</p>
-                <p>The project also covers base conversion and number display functions, teaching students about different number systems and how to represent numbers in various formats. This builds critical skills for input parsing and data conversion.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>C 04 introduce operazioni più complesse sulle stringhe, incluse le conversioni da numero a stringa e da stringa a numero. Gli studenti implementano funzioni come atoi (ASCII to integer) e comprendono come analizzare stringhe numeriche e convertirle in valori interi.</p>
+                    <p>Il progetto copre anche la conversione di base e le funzioni di visualizzazione dei numeri, insegnando agli studenti i diversi sistemi numerici e come rappresentare i numeri in vari formati. Questo costruisce competenze critiche per il parsing dell'input e la conversione dei dati.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>C 04 introduces more complex string operations including number-to-string and string-to-number conversions. Students implement functions like atoi (ASCII to integer) and understand how to parse numeric strings and convert them to integer values.</p>
+                    <p>The project also covers base conversion and number display functions, teaching students about different number systems and how to represent numbers in various formats. This builds critical skills for input parsing and data conversion.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>String to integer conversion (atoi implementation)</li>
-                    <li>Integer to string conversion</li>
-                    <li>Number base conversions (binary, octal, hex)</li>
-                    <li>Parsing numeric strings with signs</li>
-                    <li>Character-to-digit conversion</li>
-                    <li>Handling whitespace and special characters</li>
-                    <li>Understanding of ASCII numeric representation</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Conversione da stringa a intero (implementazione atoi)</li>
+                        <li>Conversione da intero a stringa</li>
+                        <li>Conversioni di base numerica (binario, ottale, esadecimale)</li>
+                        <li>Parsing di stringhe numeriche con segni</li>
+                        <li>Conversione carattere-cifra</li>
+                        <li>Gestione di spazi bianchi e caratteri speciali</li>
+                        <li>Comprensione della rappresentazione numerica ASCII</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>String to integer conversion (atoi implementation)</li>
+                        <li>Integer to string conversion</li>
+                        <li>Number base conversions (binary, octal, hex)</li>
+                        <li>Parsing numeric strings with signs</li>
+                        <li>Character-to-digit conversion</li>
+                        <li>Handling whitespace and special characters</li>
+                        <li>Understanding of ASCII numeric representation</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/c_piscine/c_piscine_c04.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/c_piscine/c_piscine_c04.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
             </div>
         </div>
     </div>
@@ -284,5 +394,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

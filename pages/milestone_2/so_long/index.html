@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,39 +329,70 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>so_long</h1>
-                <p class="project-subtitle">2D Game with Graphics</p>
+                <p class="project-subtitle lang-it">Gioco 2D con Grafica</p>
+                <p class="project-subtitle lang-en">2D Game with Graphics</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>so_long is a 2D game project using the MiniLibX graphics library. Players navigate through a map, collecting items and avoiding obstacles to reach the exit. This project introduces fundamental game development concepts and event-driven programming.</p>
-                <p>The game requires implementing sprite rendering, keyboard event handling, collision detection, and map validation. It's an excellent introduction to graphics programming and teaches essential concepts like window management, image rendering, and game loop implementation.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>so_long è un progetto di gioco 2D che utilizza la libreria grafica MiniLibX. I giocatori navigano attraverso una mappa, raccogliendo oggetti ed evitando ostacoli per raggiungere l'uscita. Questo progetto introduce concetti fondamentali di sviluppo videogiochi e programmazione event-driven.</p>
+                    <p>Il gioco richiede l'implementazione del rendering degli sprite, la gestione degli eventi da tastiera, il rilevamento delle collisioni e la validazione della mappa. È un'eccellente introduzione alla programmazione grafica e insegna concetti essenziali come la gestione delle finestre, il rendering delle immagini e l'implementazione del game loop.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>so_long is a 2D game project using the MiniLibX graphics library. Players navigate through a map, collecting items and avoiding obstacles to reach the exit. This project introduces fundamental game development concepts and event-driven programming.</p>
+                    <p>The game requires implementing sprite rendering, keyboard event handling, collision detection, and map validation. It's an excellent introduction to graphics programming and teaches essential concepts like window management, image rendering, and game loop implementation.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Graphics programming with MiniLibX</li>
-                    <li>Event-driven programming (keyboard inputs)</li>
-                    <li>Sprite and texture rendering</li>
-                    <li>Map parsing and validation</li>
-                    <li>Collision detection algorithms</li>
-                    <li>Game loop implementation</li>
-                    <li>Window management and display</li>
-                    <li>Resource management (images, memory)</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Programmazione grafica con MiniLibX</li>
+                        <li>Programmazione event-driven (input da tastiera)</li>
+                        <li>Rendering di sprite e texture</li>
+                        <li>Parsing e validazione della mappa</li>
+                        <li>Algoritmi di rilevamento collisioni</li>
+                        <li>Implementazione del game loop</li>
+                        <li>Gestione delle finestre e del display</li>
+                        <li>Gestione delle risorse (immagini, memoria)</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Graphics programming with MiniLibX</li>
+                        <li>Event-driven programming (keyboard inputs)</li>
+                        <li>Sprite and texture rendering</li>
+                        <li>Map parsing and validation</li>
+                        <li>Collision detection algorithms</li>
+                        <li>Game loop implementation</li>
+                        <li>Window management and display</li>
+                        <li>Resource management (images, memory)</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_2/so_long.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/so_long" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_2/so_long.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/so_long" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>
@@ -286,5 +400,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

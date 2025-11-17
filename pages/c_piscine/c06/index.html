@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,38 +329,66 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>C 06</h1>
-                <p class="project-subtitle">C Piscine - Program Arguments</p>
+                <p class="project-subtitle lang-it">C Piscine - Argomenti del Programma</p>
+                <p class="project-subtitle lang-en">C Piscine - Program Arguments</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>C 06 introduces command-line arguments (argc and argv), teaching students how to handle program parameters passed from the command line. This is essential for creating interactive programs that can receive input and configuration through arguments.</p>
-                <p>Students learn to parse command-line arguments, iterate through argument arrays, and create programs that behave differently based on their input parameters. This knowledge is fundamental for creating flexible, user-configurable applications.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>C 06 introduce gli argomenti della riga di comando (argc e argv), insegnando agli studenti come gestire i parametri del programma passati dalla riga di comando. Questo è essenziale per creare programmi interattivi che possono ricevere input e configurazione tramite argomenti.</p>
+                    <p>Gli studenti imparano a parsare gli argomenti della riga di comando, iterare attraverso array di argomenti e creare programmi che si comportano diversamente in base ai loro parametri di input. Questa conoscenza è fondamentale per creare applicazioni flessibili e configurabili dall'utente.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>C 06 introduces command-line arguments (argc and argv), teaching students how to handle program parameters passed from the command line. This is essential for creating interactive programs that can receive input and configuration through arguments.</p>
+                    <p>Students learn to parse command-line arguments, iterate through argument arrays, and create programs that behave differently based on their input parameters. This knowledge is fundamental for creating flexible, user-configurable applications.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Understanding of argc and argv parameters</li>
-                    <li>Command-line argument parsing</li>
-                    <li>Array of strings manipulation</li>
-                    <li>Program parameter handling</li>
-                    <li>Argument validation and error checking</li>
-                    <li>Creating interactive command-line programs</li>
-                    <li>Main function parameter usage</li>
-                    <li>Printing and processing multiple arguments</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Comprensione dei parametri argc e argv</li>
+                        <li>Parsing degli argomenti della riga di comando</li>
+                        <li>Manipolazione di array di stringhe</li>
+                        <li>Gestione dei parametri del programma</li>
+                        <li>Validazione degli argomenti e controllo errori</li>
+                        <li>Creazione di programmi interattivi da riga di comando</li>
+                        <li>Utilizzo dei parametri della funzione main</li>
+                        <li>Stampa ed elaborazione di argomenti multipli</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Understanding of argc and argv parameters</li>
+                        <li>Command-line argument parsing</li>
+                        <li>Array of strings manipulation</li>
+                        <li>Program parameter handling</li>
+                        <li>Argument validation and error checking</li>
+                        <li>Creating interactive command-line programs</li>
+                        <li>Main function parameter usage</li>
+                        <li>Printing and processing multiple arguments</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/c_piscine/c_piscine_c06.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/c_piscine/c_piscine_c06.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
             </div>
         </div>
     </div>
@@ -285,5 +396,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

@@ -4,148 +4,535 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viorica Gabriela Hacman - 42 Student</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #c2a6da;
+            color: #000000;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(140, 26, 155, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(91, 197, 195, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(67, 19, 78, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: #8c1a9b;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: #5bc5c3;
+            top: 60%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: #43134e;
+            bottom: -50px;
+            left: 30%;
+            animation-delay: -10s;
+        }
+
+        .shape:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            background: #b43abc;
+            top: 20%;
+            right: 20%;
+            animation-delay: -15s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(10px, 10px) scale(1.02); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            color: #43134e;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(-5px);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 4px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #8c1a9b, #5bc5c3, #b43abc, #5bc5c3, #8c1a9b) border-box;
+            box-shadow:
+                0 0 20px rgba(140, 26, 155, 0.5),
+                0 0 40px rgba(91, 197, 195, 0.3),
+                0 0 60px rgba(180, 58, 188, 0.2);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                box-shadow:
+                    0 0 20px rgba(140, 26, 155, 0.5),
+                    0 0 40px rgba(91, 197, 195, 0.3),
+                    0 0 60px rgba(180, 58, 188, 0.2);
+            }
+            50% {
+                box-shadow:
+                    0 0 30px rgba(91, 197, 195, 0.6),
+                    0 0 50px rgba(180, 58, 188, 0.4),
+                    0 0 70px rgba(140, 26, 155, 0.3);
+            }
+            100% {
+                box-shadow:
+                    0 0 20px rgba(140, 26, 155, 0.5),
+                    0 0 40px rgba(91, 197, 195, 0.3),
+                    0 0 60px rgba(180, 58, 188, 0.2);
+            }
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #43134e, #8c1a9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #2a082e;
+            font-weight: 500;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(67, 19, 78, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .section h2 {
+            font-size: 1.5rem;
+            color: #43134e;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(180, 58, 188, 0.3);
+        }
+
+        .section p {
+            color: #2a082e;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(140, 26, 155, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-item h3 {
+            color: #43134e;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-item p {
+            color: #2a082e;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .language-item {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .language-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(140, 26, 155, 0.2);
+        }
+
+        .language-flag {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .language-item h3 {
+            color: #43134e;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .language-item p {
+            color: #2a082e;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(180, 58, 188, 0.2);
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .education-item h3 {
+            color: #43134e;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-detail {
+            color: #2a082e;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .certificate-item {
+            margin-top: 0.8rem;
+        }
+
+        .certificate-link {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(135deg, rgba(180, 58, 188, 0.3), rgba(91, 197, 195, 0.3));
+            border-radius: 20px;
+            color: #43134e;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-link:hover {
+            background: linear-gradient(135deg, rgba(180, 58, 188, 0.5), rgba(91, 197, 195, 0.5));
+            transform: translateY(-2px);
+        }
+
+        .cta-section {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(135deg, #b43abc, #5bc5c3);
+            color: #0a0a0a;
+        }
+
+        .cta-button.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 186, 188, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: #010d0d;
+            border: 2px solid #069496;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(0, 186, 188, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: #43134e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-link:hover {
+            background: linear-gradient(135deg, rgba(180, 58, 188, 0.3), rgba(91, 197, 195, 0.3));
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #444;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="landing-container">
-        <div class="hero-section">
-            <div class="profile-content">
-                <div class="profile-header">
-                    <div class="profile-image-container">
-                        <img src="foto_profilo.jpg" alt="Viorica Gabriela Hacman" class="profile-image">
-                    </div>
-                    <div class="profile-text">
-                        <h1 class="profile-name">Viorica Gabriela Hacman</h1>
-                        <p class="profile-title">Software Engineering Student @ 42 Roma</p>
-                    </div>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-button">← Torna alla Home</a>
+
+        <div class="profile-header">
+            <div class="profile-photo">
+                <img src="foto_profilo.jpg" alt="Viorica Gabriela Hacman">
+            </div>
+            <h1>Viorica Gabriela Hacman</h1>
+            <p class="subtitle">Software Engineering Student @ 42 Roma</p>
+        </div>
+
+        <div class="section">
+            <h2>About Me</h2>
+            <p>Nata in Romania e arrivata in Italia all'età di 5 anni, ho costruito qui il mio percorso formativo e personale. Dopo essermi diplomata al Liceo Linguistico con 95/100, ho intrapreso gli studi universitari in Lingue e Mediazione Linguistica presso Roma Tre, superando l'esame di ammissione per il corso a numero chiuso. Il Covid ha rappresentato un momento di pausa forzata, ma la determinazione nel completare ciò che avevo iniziato mi ha portata a laurearmi in Lingue e Culture Europee e del Resto del Mondo con e-Campus.</p>
+
+            <p>Il percorso non è stato semplice: ho lavorato come cameriera e addetta alle pulizie per sostenermi economicamente e permettermi di vivere in autonomia. Questi anni mi hanno insegnato il valore della resilienza, della disciplina e dell'importanza di non arrendersi di fronte alle difficoltà. Ogni sfida superata ha rafforzato la mia determinazione a raggiungere i miei obiettivi.</p>
+
+            <p>A novembre 2024, poco dopo la laurea, ho scelto di non accontentarmi di una vita monotona e ho colto un'opportunità completamente nuova: sono entrata alla 42 Roma Luiss, parte del network internazionale di scuole di programmazione fondata da Xavier Niel. La 42 è riconosciuta a livello globale per il suo innovativo metodo peer-to-peer, senza professori né lezioni tradizionali, dove gli studenti imparano attraverso progetti pratici e collaborazione. Il network 42 è presente in oltre 40 campus nel mondo e offre una formazione riconosciuta dal settore tech internazionale, con un diploma equivalente a una laurea triennale.</p>
+
+            <p>Durante il percorso alla 42 ho affrontato progetti che spaziano dalla programmazione di basso livello in C, alla creazione di sistemi complessi, fino allo sviluppo in C++. Ogni progetto mi ha insegnato l'importanza della precisione, dell'efficienza del codice e della gestione delle risorse. L'esperienza alla 42 mi ha insegnato a credere in me stessa, ad affrontare la sconfitta e a rialzarmi sempre più forte. Ho inoltre ampliato le mie competenze attraverso corsi su Coursera, includendo Introduction to Front-End Development (Meta) e C for Everyone: Programming Fundamentals (UC Santa Cruz).</p>
+
+            <p>Il mio background multiculturale e linguistico, unito alla passione per la tecnologia e alla capacità di superare le difficoltà, mi rende una aspirante professionista determinata, adattabile e sempre pronta ad imparare.</p>
+        </div>
+
+        <div class="section">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="skill-icon">💻</span>
+                    <h3>Programming Languages</h3>
+                    <p>C, C++, Shell Script</p>
                 </div>
-
-                <div class="bio-section">
-                    <h2>About Me</h2>
-                    <p>Nata in Romania e arrivata in Italia all'età di 5 anni, ho costruito qui il mio percorso formativo e personale. Dopo essermi diplomata al Liceo Linguistico con 95/100, ho intrapreso gli studi universitari in Lingue e Mediazione Linguistica presso Roma Tre, superando l'esame di ammissione per il corso a numero chiuso. Il Covid ha rappresentato un momento di pausa forzata, ma la determinazione nel completare ciò che avevo iniziato mi ha portata a laurearmi in Lingue e Culture Europee e del Resto del Mondo con e-Campus.</p>
-
-                    <p>Il percorso non è stato semplice: ho lavorato come cameriera e addetta alle pulizie per sostenermi economicamente e permettermi di vivere in autonomia. Questi anni mi hanno insegnato il valore della resilienza, della disciplina e dell'importanza di non arrendersi di fronte alle difficoltà. Ogni sfida superata ha rafforzato la mia determinazione a raggiungere i miei obiettivi.</p>
-
-                    <p>A novembre 2024, poco dopo la laurea, ho scelto di non accontentarmi di una vita monotona e ho colto un'opportunità completamente nuova: sono entrata alla 42 Roma Luiss, parte del network internazionale di scuole di programmazione fondata da Xavier Niel. La 42 è riconosciuta a livello globale per il suo innovativo metodo peer-to-peer, senza professori né lezioni tradizionali, dove gli studenti imparano attraverso progetti pratici e collaborazione. Il network 42 è presente in oltre 40 campus nel mondo e offre una formazione riconosciuta dal settore tech internazionale, con un diploma equivalente a una laurea triennale.</p>
-
-                    <p>Durante il percorso alla 42 ho affrontato progetti che spaziano dalla programmazione di basso livello in C, alla creazione di sistemi complessi, fino allo sviluppo in C++. Ogni progetto mi ha insegnato l'importanza della precisione, dell'efficienza del codice e della gestione delle risorse. L'esperienza alla 42 mi ha insegnato a credere in me stessa, ad affrontare la sconfitta e a rialzarmi sempre più forte. Ho inoltre ampliato le mie competenze attraverso corsi su Coursera, includendo Introduction to Front-End Development (Meta) e C for Everyone: Programming Fundamentals (UC Santa Cruz).</p>
-
-                    <p>Il mio background multiculturale e linguistico, unito alla passione per la tecnologia e alla capacità di superare le difficoltà, mi rende una aspirante professionista determinata, adattabile e sempre pronta ad imparare.</p>
+                <div class="skill-item">
+                    <span class="skill-icon">🔧</span>
+                    <h3>System Programming</h3>
+                    <p>Unix/Linux, Processes, Threading</p>
                 </div>
-
-                <div class="skills-highlight">
-                    <h2>Technical Skills</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <span class="skill-icon">💻</span>
-                            <h3>Programming Languages</h3>
-                            <p>C, C++, Shell Script</p>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">🔧</span>
-                            <h3>System Programming</h3>
-                            <p>Unix/Linux, Processes, Threading</p>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">🧩</span>
-                            <h3>Algorithms</h3>
-                            <p>Data Structures, Optimization</p>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">🌐</span>
-                            <h3>Networking</h3>
-                            <p>TCP/IP, Socket Programming</p>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">🎨</span>
-                            <h3>Front-End Development</h3>
-                            <p>HTML, CSS, JavaScript</p>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-icon">🛠️</span>
-                            <h3>Tools & Software</h3>
-                            <p>Windows, Microsoft Office, Canva</p>
-                        </div>
-                    </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🧩</span>
+                    <h3>Algorithms</h3>
+                    <p>Data Structures, Optimization</p>
                 </div>
-
-                <div class="skills-highlight">
-                    <h2>Languages</h2>
-                    <div class="languages-grid">
-                        <div class="language-item">
-                            <span class="language-flag">🇮🇹</span>
-                            <h3>Italiano</h3>
-                            <p>Madrelingua acquisita</p>
-                        </div>
-                        <div class="language-item">
-                            <span class="language-flag">🇷🇴</span>
-                            <h3>Rumeno</h3>
-                            <p>Madrelingua</p>
-                        </div>
-                        <div class="language-item">
-                            <span class="language-flag">🇬🇧</span>
-                            <h3>Inglese</h3>
-                            <p>Fluente</p>
-                        </div>
-                    </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🌐</span>
+                    <h3>Networking</h3>
+                    <p>TCP/IP, Socket Programming</p>
                 </div>
-
-                <div class="education-section">
-                    <h2>Education & Certifications</h2>
-                    <div class="education-item">
-                        <h3>🎓 Laurea in Lingue e Culture Europee e del Resto del Mondo</h3>
-                        <p class="education-detail">Formazione umanistica con focus su lingue e culture internazionali, particolarmente inglese e tedesco. </p>
-                    </div>
-                    <div class="education-item">
-                        <h3>🏫 42 Roma Luiss - Common Core</h3>
-                        <p class="education-detail">Percorso intensivo di programmazione peer-to-peer • In corso</p>
-                    </div>
-                    <div class="education-item">
-                        <h3>📜 Coursera Certifications</h3>
-                        <div class="certificate-item">
-                            <p class="education-detail">• Introduction to Front-End Development (Meta)</p>
-                            <a href="certificates/introduction_front_end_meta_certificate.pdf" class="certificate-link" target="_blank">View Certificate</a>
-                        </div>
-                        <div class="certificate-item">
-                            <p class="education-detail">• C for Everyone: Programming Fundamentals (UC Santa Cruz)</p>
-                            <a href="certificates/c_fundamentals_certificate.pdf" class="certificate-link" target="_blank">View Certificate</a>
-                        </div>
-                    </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🎨</span>
+                    <h3>Front-End Development</h3>
+                    <p>HTML, CSS, JavaScript</p>
                 </div>
-
-                <div class="cta-section">
-                    <a href="portfolio.html" class="cta-button primary">View My Portfolio</a>
-                    <a href="#" class="cta-button secondary" id="cv-button">Download CV</a>
-                </div>
-
-                <div class="contact-section">
-                    <h2>Get in Touch</h2>
-                    <div class="contact-links">
-                        <a href="https://github.com/vhacman" target="_blank" class="contact-link">
-                            <span class="contact-icon">📁</span>
-                            GitHub
-                        </a>
-                        <a href="https://www.linkedin.com/in/viorica-gabriela-hacman-63a412267/" target="_blank" class="contact-link">
-                            <span class="contact-icon">💼</span>
-                            LinkedIn
-                        </a>
-                        <a href="mailto:hacmanvioricagabriela@gmail.com" class="contact-link">
-                            <span class="contact-icon">✉️</span>
-                            Email
-                        </a>
-                    </div>
+                <div class="skill-item">
+                    <span class="skill-icon">🛠️</span>
+                    <h3>Tools & Software</h3>
+                    <p>Windows, Microsoft Office, Canva</p>
                 </div>
             </div>
         </div>
+
+        <div class="section">
+            <h2>Languages</h2>
+            <div class="languages-grid">
+                <div class="language-item">
+                    <span class="language-flag">🇮🇹</span>
+                    <h3>Italiano</h3>
+                    <p>Madrelingua acquisita</p>
+                </div>
+                <div class="language-item">
+                    <span class="language-flag">🇷🇴</span>
+                    <h3>Rumeno</h3>
+                    <p>Madrelingua</p>
+                </div>
+                <div class="language-item">
+                    <span class="language-flag">🇬🇧</span>
+                    <h3>Inglese</h3>
+                    <p>Fluente</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Education & Certifications</h2>
+            <div class="education-item">
+                <h3>🎓 Laurea in Lingue e Culture Europee e del Resto del Mondo</h3>
+                <p class="education-detail">Formazione umanistica con focus su lingue e culture internazionali, particolarmente inglese e tedesco.</p>
+            </div>
+            <div class="education-item">
+                <h3>🏫 42 Roma Luiss - Common Core</h3>
+                <p class="education-detail">Percorso intensivo di programmazione peer-to-peer • In corso</p>
+            </div>
+            <div class="education-item">
+                <h3>📜 Coursera Certifications</h3>
+                <div class="certificate-item">
+                    <p class="education-detail">• Introduction to Front-End Development (Meta)</p>
+                    <a href="certificates/introduction_front_end_meta_certificate.pdf" class="certificate-link" target="_blank">View Certificate</a>
+                </div>
+                <div class="certificate-item">
+                    <p class="education-detail">• C for Everyone: Programming Fundamentals (UC Santa Cruz)</p>
+                    <a href="certificates/c_fundamentals_certificate.pdf" class="certificate-link" target="_blank">View Certificate</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="portfolio.html" class="cta-button primary">View My Portfolio</a>
+            <a href="curriculum.pdf" class="cta-button secondary" target="_blank">Download CV</a>
+        </div>
     </div>
 
-    <script>
-        // Placeholder per il pulsante CV - puoi collegare il tuo CV qui
-        document.getElementById('cv-button').addEventListener('click', function(e) {
-            // e.preventDefault();
-            // Quando avrai il CV, sostituisci l'href con il percorso del file
-            alert('Aggiungi il tuo CV nella root del progetto e aggiorna il link href');
-        });
-    </script>
+    <footer>
+        &copy; 2025 Viorica Gabriela Hacman
+    </footer>
 </body>
 </html>

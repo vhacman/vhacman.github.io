@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,39 +329,70 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>Born2beroot</h1>
-                <p class="project-subtitle">System Administration & Virtualization</p>
+                <p class="project-subtitle lang-it">Amministrazione di Sistema e Virtualizzazione</p>
+                <p class="project-subtitle lang-en">System Administration & Virtualization</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>Born2beroot is a system administration project that introduces the fundamentals of virtualization and server configuration. Students must set up a secure virtual machine following strict guidelines, implementing various security policies and services.</p>
-                <p>The project covers essential sysadmin tasks including partitioning, configuring sudo policies, setting up SSH, implementing a firewall with UFW, and creating monitoring scripts. It provides hands-on experience with both Debian and Rocky Linux distributions.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>Born2beroot è un progetto di amministrazione di sistema che introduce i fondamenti della virtualizzazione e della configurazione dei server. Gli studenti devono configurare una macchina virtuale sicura seguendo linee guida rigorose, implementando varie politiche di sicurezza e servizi.</p>
+                    <p>Il progetto copre attività essenziali di sysadmin tra cui partizionamento, configurazione delle politiche sudo, configurazione di SSH, implementazione di un firewall con UFW e creazione di script di monitoraggio. Fornisce esperienza pratica con distribuzioni Debian e Rocky Linux.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>Born2beroot is a system administration project that introduces the fundamentals of virtualization and server configuration. Students must set up a secure virtual machine following strict guidelines, implementing various security policies and services.</p>
+                    <p>The project covers essential sysadmin tasks including partitioning, configuring sudo policies, setting up SSH, implementing a firewall with UFW, and creating monitoring scripts. It provides hands-on experience with both Debian and Rocky Linux distributions.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Virtual machine setup and configuration (VirtualBox)</li>
-                    <li>Linux system administration fundamentals</li>
-                    <li>Sudo configuration and privilege management</li>
-                    <li>SSH server setup and security hardening</li>
-                    <li>UFW firewall configuration and rules</li>
-                    <li>Password policies and user management</li>
-                    <li>Bash scripting for system monitoring</li>
-                    <li>Understanding of AppArmor/SELinux</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Configurazione e setup di macchine virtuali (VirtualBox)</li>
+                        <li>Fondamenti di amministrazione di sistemi Linux</li>
+                        <li>Configurazione di sudo e gestione dei privilegi</li>
+                        <li>Setup del server SSH e hardening di sicurezza</li>
+                        <li>Configurazione del firewall UFW e regole</li>
+                        <li>Politiche delle password e gestione utenti</li>
+                        <li>Scripting Bash per il monitoraggio del sistema</li>
+                        <li>Comprensione di AppArmor/SELinux</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Virtual machine setup and configuration (VirtualBox)</li>
+                        <li>Linux system administration fundamentals</li>
+                        <li>Sudo configuration and privilege management</li>
+                        <li>SSH server setup and security hardening</li>
+                        <li>UFW firewall configuration and rules</li>
+                        <li>Password policies and user management</li>
+                        <li>Bash scripting for system monitoring</li>
+                        <li>Understanding of AppArmor/SELinux</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_1/Born2beroot.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/Born2beroot" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_1/Born2beroot.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/Born2beroot" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>
@@ -286,5 +400,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

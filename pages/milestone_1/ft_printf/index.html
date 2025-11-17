@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,38 +329,68 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>ft_printf</h1>
-                <p class="project-subtitle">Printf Function Recreation</p>
+                <p class="project-subtitle lang-it">Ricreazione della Funzione Printf</p>
+                <p class="project-subtitle lang-en">Printf Function Recreation</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>ft_printf is a recreation of the famous C standard library printf function. This project challenges you to implement a variadic function capable of handling multiple format specifiers and conversion types, mirroring the behavior of the original printf.</p>
-                <p>The project requires handling various data types including characters, strings, pointers, integers (signed and unsigned), and hexadecimal numbers. It's an excellent exercise in variadic functions, type conversion, and output formatting.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>ft_printf è una ricreazione della famosa funzione printf della libreria standard C. Questo progetto ti sfida a implementare una funzione variadica capace di gestire molteplici specificatori di formato e tipi di conversione, replicando il comportamento del printf originale.</p>
+                    <p>Il progetto richiede la gestione di vari tipi di dati inclusi caratteri, stringhe, puntatori, interi (con e senza segno) e numeri esadecimali. È un eccellente esercizio sulle funzioni variadiche, la conversione di tipo e la formattazione dell'output.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>ft_printf is a recreation of the famous C standard library printf function. This project challenges you to implement a variadic function capable of handling multiple format specifiers and conversion types, mirroring the behavior of the original printf.</p>
+                    <p>The project requires handling various data types including characters, strings, pointers, integers (signed and unsigned), and hexadecimal numbers. It's an excellent exercise in variadic functions, type conversion, and output formatting.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Variadic functions in C (va_list, va_start, va_arg, va_end)</li>
-                    <li>Format specifier parsing and handling</li>
-                    <li>Type conversion and casting</li>
-                    <li>Number base conversions (decimal, hexadecimal)</li>
-                    <li>Output buffering and optimization</li>
-                    <li>Edge case handling and validation</li>
-                    <li>Function modularity and code organization</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Funzioni variadiche in C (va_list, va_start, va_arg, va_end)</li>
+                        <li>Parsing e gestione degli specificatori di formato</li>
+                        <li>Conversione e casting di tipi</li>
+                        <li>Conversioni di base numerica (decimale, esadecimale)</li>
+                        <li>Buffering dell'output e ottimizzazione</li>
+                        <li>Gestione di casi limite e validazione</li>
+                        <li>Modularità delle funzioni e organizzazione del codice</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Variadic functions in C (va_list, va_start, va_arg, va_end)</li>
+                        <li>Format specifier parsing and handling</li>
+                        <li>Type conversion and casting</li>
+                        <li>Number base conversions (decimal, hexadecimal)</li>
+                        <li>Output buffering and optimization</li>
+                        <li>Edge case handling and validation</li>
+                        <li>Function modularity and code organization</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_1/ft_printf.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/ft_printf" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_1/ft_printf.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/ft_printf" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>
@@ -285,5 +398,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

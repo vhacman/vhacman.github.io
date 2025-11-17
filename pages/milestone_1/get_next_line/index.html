@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,38 +329,68 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>get_next_line</h1>
-                <p class="project-subtitle">File Reading Function</p>
+                <p class="project-subtitle lang-it">Funzione di Lettura File</p>
+                <p class="project-subtitle lang-en">File Reading Function</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>get_next_line is a function that reads a file line by line, regardless of the line length. This project introduces the concept of static variables in C and teaches efficient buffer management for file I/O operations.</p>
-                <p>The function must handle multiple file descriptors simultaneously and manage memory efficiently, making it an essential utility for any file reading operation. It's designed to work with any buffer size and handle various edge cases.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>get_next_line è una funzione che legge un file riga per riga, indipendentemente dalla lunghezza della riga. Questo progetto introduce il concetto di variabili statiche in C e insegna la gestione efficiente dei buffer per le operazioni di I/O su file.</p>
+                    <p>La funzione deve gestire simultaneamente più descrittori di file e gestire la memoria in modo efficiente, rendendola un'utilità essenziale per qualsiasi operazione di lettura file. È progettata per funzionare con qualsiasi dimensione di buffer e gestire vari casi limite.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>get_next_line is a function that reads a file line by line, regardless of the line length. This project introduces the concept of static variables in C and teaches efficient buffer management for file I/O operations.</p>
+                    <p>The function must handle multiple file descriptors simultaneously and manage memory efficiently, making it an essential utility for any file reading operation. It's designed to work with any buffer size and handle various edge cases.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>File descriptor manipulation and management</li>
-                    <li>Static variables and their lifetime</li>
-                    <li>Dynamic memory allocation and deallocation</li>
-                    <li>Buffer management and optimization</li>
-                    <li>Reading from multiple file descriptors</li>
-                    <li>Memory leak prevention and debugging</li>
-                    <li>Efficient string manipulation</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Manipolazione e gestione dei descrittori di file</li>
+                        <li>Variabili statiche e il loro ciclo di vita</li>
+                        <li>Allocazione e deallocazione dinamica della memoria</li>
+                        <li>Gestione e ottimizzazione dei buffer</li>
+                        <li>Lettura da descrittori di file multipli</li>
+                        <li>Prevenzione e debugging di memory leak</li>
+                        <li>Manipolazione efficiente delle stringhe</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>File descriptor manipulation and management</li>
+                        <li>Static variables and their lifetime</li>
+                        <li>Dynamic memory allocation and deallocation</li>
+                        <li>Buffer management and optimization</li>
+                        <li>Reading from multiple file descriptors</li>
+                        <li>Memory leak prevention and debugging</li>
+                        <li>Efficient string manipulation</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_1/get_next_line.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/get_next_line" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_1/get_next_line.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/get_next_line" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>
@@ -285,5 +398,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

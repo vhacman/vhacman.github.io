@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,37 +329,64 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>C 02</h1>
-                <p class="project-subtitle">C Piscine - Strings</p>
+                <p class="project-subtitle lang-it">C Piscine - Stringhe</p>
+                <p class="project-subtitle lang-en">C Piscine - Strings</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>C 02 focuses on strings in C, teaching students how to manipulate null-terminated character arrays. This project covers string copying, concatenation, comparison, and transformation operations, building essential skills for text processing in C.</p>
-                <p>Students implement their own versions of standard library string functions, gaining deep understanding of how strings work in C. The exercises emphasize pointer manipulation, array traversal, and character-by-character operations.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>C 02 si concentra sulle stringhe in C, insegnando agli studenti come manipolare array di caratteri terminati con null. Questo progetto copre operazioni di copia, concatenazione, confronto e trasformazione di stringhe, costruendo competenze essenziali per l'elaborazione del testo in C.</p>
+                    <p>Gli studenti implementano le proprie versioni delle funzioni standard di libreria per le stringhe, acquisendo una comprensione profonda di come funzionano le stringhe in C. Gli esercizi enfatizzano la manipolazione dei puntatori, l'attraversamento degli array e le operazioni carattere per carattere.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>C 02 focuses on strings in C, teaching students how to manipulate null-terminated character arrays. This project covers string copying, concatenation, comparison, and transformation operations, building essential skills for text processing in C.</p>
+                    <p>Students implement their own versions of standard library string functions, gaining deep understanding of how strings work in C. The exercises emphasize pointer manipulation, array traversal, and character-by-character operations.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>String fundamentals and null termination</li>
-                    <li>String manipulation functions (strcpy, strcat, etc.)</li>
-                    <li>Character array traversal and manipulation</li>
-                    <li>String comparison and searching</li>
-                    <li>Character classification and conversion</li>
-                    <li>Working with ASCII values</li>
-                    <li>Buffer handling and bounds checking</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Fondamenti delle stringhe e terminazione null</li>
+                        <li>Funzioni di manipolazione stringhe (strcpy, strcat, ecc.)</li>
+                        <li>Attraversamento e manipolazione di array di caratteri</li>
+                        <li>Confronto e ricerca nelle stringhe</li>
+                        <li>Classificazione e conversione dei caratteri</li>
+                        <li>Lavoro con valori ASCII</li>
+                        <li>Gestione dei buffer e controllo dei limiti</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>String fundamentals and null termination</li>
+                        <li>String manipulation functions (strcpy, strcat, etc.)</li>
+                        <li>Character array traversal and manipulation</li>
+                        <li>String comparison and searching</li>
+                        <li>Character classification and conversion</li>
+                        <li>Working with ASCII values</li>
+                        <li>Buffer handling and bounds checking</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/c_piscine/c_piscine_c02.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/c_piscine/c_piscine_c02.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
             </div>
         </div>
     </div>
@@ -284,5 +394,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

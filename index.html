@@ -106,6 +106,7 @@
             max-width: 800px;
             position: relative;
             z-index: 1;
+            margin-top: 300px;
         }
 
         h1 {
@@ -187,9 +188,486 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .profile-menu {
+            position: absolute;
+            top: -260px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .profile-photo {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #8c1a9b, #5bc5c3, #b43abc, #5bc5c3, #8c1a9b) border-box;
+            box-shadow:
+                0 0 20px rgba(140, 26, 155, 0.5),
+                0 0 40px rgba(91, 197, 195, 0.3),
+                0 0 60px rgba(180, 58, 188, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                box-shadow:
+                    0 0 20px rgba(140, 26, 155, 0.5),
+                    0 0 40px rgba(91, 197, 195, 0.3),
+                    0 0 60px rgba(180, 58, 188, 0.2);
+            }
+            50% {
+                box-shadow:
+                    0 0 30px rgba(91, 197, 195, 0.6),
+                    0 0 50px rgba(180, 58, 188, 0.4),
+                    0 0 70px rgba(140, 26, 155, 0.3);
+            }
+            100% {
+                box-shadow:
+                    0 0 20px rgba(140, 26, 155, 0.5),
+                    0 0 40px rgba(91, 197, 195, 0.3),
+                    0 0 60px rgba(180, 58, 188, 0.2);
+            }
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 0 40px rgba(140, 26, 155, 0.7),
+                0 0 60px rgba(91, 197, 195, 0.5),
+                0 0 80px rgba(180, 58, 188, 0.4);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .about-bubble {
+            position: fixed;
+            top: 2%;
+            left:45%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+
+        .passions-bubble {
+            position: fixed;
+            top: 35%;
+            left: 10%;
+            z-index: 100;
+        }
+
+        .portfolio-bubble {
+            position: fixed;
+            top: 35%;
+            right: 10%;
+            z-index: 100;
+        }
+
+        .portfolio-bubble .bubble-trigger {
+            text-decoration: none;
+            color: #43134e;
+        }
+
+        .contact-bubble {
+            position: fixed;
+            bottom: 12%;
+            right: 20%;
+            z-index: 100;
+        }
+
+        .contact-bubble .bubble-trigger {
+            text-decoration: none;
+            color: #43134e;
+        }
+
+        .bubble-trigger {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .bubble-trigger:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes bubble-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-5px) rotate(-1deg); }
+            75% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .about-bubble,
+        .passions-bubble,
+        .portfolio-bubble,
+        .contact-bubble,
+        .social-bubble {
+            animation: bubble-float 6s ease-in-out infinite;
+        }
+
+        .passions-bubble { animation-delay: -1s; }
+        .portfolio-bubble { animation-delay: -2s; }
+        .contact-bubble { animation-delay: -3s; }
+        .social-bubble { animation-delay: -4s; }
+
+        .mini-bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        .mini-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(180, 58, 188, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: mini-bubble-rise 4s ease-out infinite;
+            opacity: 0;
+        }
+
+        .mini-bubble:nth-child(1) {
+            width: 25px;
+            height: 25px;
+            left: 10%;
+            animation-delay: 0s;
+            animation-name: mini-bubble-rise-left;
+        }
+
+        .mini-bubble:nth-child(2) {
+            width: 15px;
+            height: 15px;
+            left: 40%;
+            animation-delay: 0.8s;
+        }
+
+        .mini-bubble:nth-child(3) {
+            width: 35px;
+            height: 35px;
+            left: 70%;
+            animation-delay: 1.6s;
+            animation-name: mini-bubble-rise-right;
+        }
+
+        .mini-bubble:nth-child(4) {
+            width: 12px;
+            height: 12px;
+            left: 25%;
+            animation-delay: 2.4s;
+            animation-name: mini-bubble-rise-right;
+        }
+
+        .mini-bubble:nth-child(5) {
+            width: 20px;
+            height: 20px;
+            left: 85%;
+            animation-delay: 3.2s;
+            animation-name: mini-bubble-rise-left;
+        }
+
+        .mini-bubble:nth-child(6) {
+            width: 40px;
+            height: 40px;
+            left: 55%;
+            animation-delay: 0.4s;
+        }
+
+        .mini-bubble:nth-child(7) {
+            width: 18px;
+            height: 18px;
+            left: 5%;
+            animation-delay: 1.2s;
+            animation-name: mini-bubble-rise-right;
+        }
+
+        @keyframes mini-bubble-rise {
+            0% {
+                bottom: 0;
+                opacity: 0;
+                transform: scale(0.5) translateX(0);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                bottom: 300px;
+                opacity: 0;
+                transform: scale(1) translateX(0);
+            }
+        }
+
+        @keyframes mini-bubble-rise-left {
+            0% {
+                bottom: 0;
+                opacity: 0;
+                transform: scale(0.5) translateX(0);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                bottom: 300px;
+                opacity: 0;
+                transform: scale(1) translateX(-30px);
+            }
+        }
+
+        @keyframes mini-bubble-rise-right {
+            0% {
+                bottom: 0;
+                opacity: 0;
+                transform: scale(0.5) translateX(0);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            100% {
+                bottom: 300px;
+                opacity: 0;
+                transform: scale(1) translateX(30px);
+            }
+        }
+
+        .bubble-popup {
+            position: absolute;
+            top: 210px;
+            left: 0;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            min-width: 320px;
+            max-width: 400px;
+            box-shadow: 0 10px 40px rgba(67, 19, 78, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .passions-bubble .bubble-popup {
+            top: auto;
+            bottom: 210px;
+            transform: translateY(10px);
+        }
+
+        .about-bubble:hover .bubble-popup,
+        .passions-bubble:hover .bubble-popup,
+        .portfolio-bubble:hover .bubble-popup,
+        .contact-bubble:hover .bubble-popup,
+        .social-bubble:hover .bubble-popup {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .contact-bubble .bubble-popup {
+            top: auto;
+            bottom: 210px;
+            left: auto;
+            right: 0;
+            transform: translateY(10px);
+        }
+
+        .contact-bubble .bubble-popup a {
+            display: block;
+            padding: 10px 15px;
+            color: #43134e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(140, 26, 155, 0.1);
+        }
+
+        .contact-bubble .bubble-popup a:last-child {
+            border-bottom: none;
+        }
+
+        .contact-bubble .bubble-popup a:hover {
+            background: linear-gradient(135deg, rgba(180, 58, 188, 0.2), rgba(91, 197, 195, 0.2));
+            padding-left: 20px;
+        }
+
+        .social-bubble {
+            position: fixed;
+            bottom: 10%;
+            left: 20%;
+            z-index: 100;
+        }
+
+        .social-bubble .bubble-popup {
+            top: auto;
+            bottom: 210px;
+            left: auto;
+            right: 0;
+            transform: translateY(10px);
+        }
+
+        .social-bubble .bubble-popup a {
+            display: block;
+            padding: 10px 15px;
+            color: #43134e;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(140, 26, 155, 0.1);
+        }
+
+        .social-bubble .bubble-popup a:last-child {
+            border-bottom: none;
+        }
+
+        .social-bubble .bubble-popup a:hover {
+            background: linear-gradient(135deg, rgba(180, 58, 188, 0.2), rgba(91, 197, 195, 0.2));
+            padding-left: 20px;
+        }
+
+        .popup-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #43134e;
+            margin-bottom: 0.8rem;
+        }
+
+        .popup-text {
+            color: #2a082e;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
+    <div class="about-bubble">
+        <a href="hacmanvioricagabriela.html" class="bubble-trigger">Chi<br>sono?</a>
+        <div class="mini-bubbles">
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+        </div>
+        <div class="bubble-popup">
+            <h3 class="popup-title">Chi sono?</h3>
+            <p class="popup-text">
+                Ciao! Sono Viorica Gabriela Hacman, laureata in lingue e culture europee e del resto del mondo - L11,
+                nel 2024 scopro il mondo della programmazione e me ne appassiono.
+                Comincio così il mio percorso presso la 42 Roma Luiss.
+                Attualmente mi sto formando su C, C++, Java e altre tecnologie per diventare
+                una sviluppatrice software competente. Clicca per sapere altro 🤗.
+            </p>
+        </div>
+    </div>
+
+    <div class="passions-bubble">
+        <div class="bubble-trigger">Le Mie<br>Passioni</div>
+        <div class="mini-bubbles">
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+        </div>
+        <div class="bubble-popup">
+            <h3 class="popup-title">Le Mie Passioni</h3>
+            <p class="popup-text">
+                Amo cucinare, in particolare per le persone che amo.
+                Adoro fare lunghe passeggiate, ballare e sono innamorata
+                della musica. Piu di tutto sono innamorata della mia cagnolina Arya,
+                che da quando è arrivata nelle nostre vite ci ha insegnato a vivere
+                realmente.
+            </p>
+        </div>
+    </div>
+
+    <div class="portfolio-bubble">
+        <a href="portfolio.html" class="bubble-trigger">Vedi<br>Portfolio</a>
+        <div class="mini-bubbles">
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+        </div>
+        <div class="bubble-popup">
+            <p class="popup-text" style="text-align: center; font-weight: 600;">
+                Click to view portfolio
+            </p>
+        </div>
+    </div>
+
+    <div class="contact-bubble">
+        <div class="bubble-trigger">Contact<br>Me</div>
+        <div class="mini-bubbles">
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+        </div>
+        <div class="bubble-popup">
+            <a href="contatti.html">Contatti</a>
+            <a href="mailto:hacmanvioricagabriela@gmail.com">Email</a>
+            <a href="tel:+393278149801">Chiamami</a>
+        </div>
+    </div>
+
+    <div class="social-bubble">
+        <div class="bubble-trigger">Social<br>Links</div>
+        <div class="mini-bubbles">
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+            <div class="mini-bubble"></div>
+        </div>
+        <div class="bubble-popup">
+            <a href="https://github.com/vhacman" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/viorica-gabriela-hacman-63a412267/" target="_blank">LinkedIn</a>
+            <a href="https://linktr.ee/hacmanvioricagabriela" target="_blank">Linktree</a>
+        </div>
+    </div>
+
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -198,21 +676,16 @@
     </div>
 
     <div class="hero">
+        <div class="profile-menu">
+            <div class="profile-photo">
+                <img src="foto_profilo.jpg" alt="Profile Photo">
+            </div>
+        </div>
         <h1>Viorica Gabriela Hacman</h1>
         <p class="tagline">
             Junior Software Developer | 42 Student<br>
             Learning C, C++, Java and more.
         </p>
-
-        <div class="links">
-            <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
-            <a href="mailto:hacmanvioricagabriela@gmail.com" class="btn btn-secondary">Contact Me</a>
-        </div>
-
-        <div class="social-links">
-            <a href="https://github.com/vhacman" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/viorica-gabriela-hacman-63a412267/" target="_blank">LinkedIn</a>
-        </div>
     </div>
 
     <footer>

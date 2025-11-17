@@ -109,16 +109,98 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
         }
 
         h1 {
@@ -239,6 +321,8 @@
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,39 +330,69 @@
         <div class="shape"></div>
     </div>
 
-    <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
 
+    <div class="container">
         <div class="project-detail">
             <div class="project-header">
                 <h1>CPP Module 02</h1>
-                <p class="project-subtitle">Ad-hoc Polymorphism & Operator Overloading</p>
+                <p class="project-subtitle lang-it">Polimorfismo Ad-hoc e Sovraccarico degli Operatori</p>
+                <p class="project-subtitle lang-en">Ad-hoc Polymorphism & Operator Overloading</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>CPP Module 02 introduces ad-hoc polymorphism through operator overloading and the orthodox canonical class form. Students learn how to overload operators to make custom classes behave like built-in types, and understand the importance of copy constructors, assignment operators, and destructors.</p>
-                <p>The module covers fixed-point numbers implementation, demonstrating practical use of operator overloading. Students must implement the canonical form (constructor, copy constructor, assignment operator, destructor) to ensure proper resource management and object copying.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>CPP Module 02 introduce il polimorfismo ad-hoc attraverso il sovraccarico degli operatori e la forma canonica ortodossa delle classi. Gli studenti imparano a sovraccaricare gli operatori per far comportare le classi personalizzate come tipi built-in, e comprendono l'importanza dei costruttori di copia, degli operatori di assegnazione e dei distruttori.</p>
+                    <p>Il modulo copre l'implementazione dei numeri a virgola fissa, dimostrando l'uso pratico del sovraccarico degli operatori. Gli studenti devono implementare la forma canonica (costruttore, costruttore di copia, operatore di assegnazione, distruttore) per garantire una corretta gestione delle risorse e copia degli oggetti.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>CPP Module 02 introduces ad-hoc polymorphism through operator overloading and the orthodox canonical class form. Students learn how to overload operators to make custom classes behave like built-in types, and understand the importance of copy constructors, assignment operators, and destructors.</p>
+                    <p>The module covers fixed-point numbers implementation, demonstrating practical use of operator overloading. Students must implement the canonical form (constructor, copy constructor, assignment operator, destructor) to ensure proper resource management and object copying.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Operator overloading (arithmetic, comparison, I/O)</li>
-                    <li>Orthodox canonical class form (Coplien form)</li>
-                    <li>Copy constructor implementation</li>
-                    <li>Assignment operator overloading</li>
-                    <li>Fixed-point number representation</li>
-                    <li>Deep vs shallow copying</li>
-                    <li>Ad-hoc polymorphism concepts</li>
-                    <li>Proper destructor implementation</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Sovraccarico degli operatori (aritmetici, di confronto, I/O)</li>
+                        <li>Forma canonica ortodossa delle classi (forma Coplien)</li>
+                        <li>Implementazione del costruttore di copia</li>
+                        <li>Sovraccarico dell'operatore di assegnazione</li>
+                        <li>Rappresentazione dei numeri a virgola fissa</li>
+                        <li>Copia profonda vs copia superficiale</li>
+                        <li>Concetti di polimorfismo ad-hoc</li>
+                        <li>Implementazione corretta del distruttore</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Operator overloading (arithmetic, comparison, I/O)</li>
+                        <li>Orthodox canonical class form (Coplien form)</li>
+                        <li>Copy constructor implementation</li>
+                        <li>Assignment operator overloading</li>
+                        <li>Fixed-point number representation</li>
+                        <li>Deep vs shallow copying</li>
+                        <li>Ad-hoc polymorphism concepts</li>
+                        <li>Proper destructor implementation</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_4/cpp_modules/CPP02.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/CPP02" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_4/cpp_modules/CPP02.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/CPP02" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>
@@ -286,5 +400,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>

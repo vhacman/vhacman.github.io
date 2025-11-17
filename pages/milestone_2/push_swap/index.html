@@ -109,16 +109,37 @@
         }
 
         .back-link {
-            display: inline-block;
-            color: #666;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            line-height: 1.2;
+            transition: all 0.3s ease;
         }
 
         .back-link:hover {
-            color: #00babc;
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
         }
 
         h1 {
@@ -236,9 +257,71 @@
             color: #444;
             font-size: 0.8rem;
         }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 20px rgba(140, 26, 155, 0.3),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.2),
+                inset 0 10px 20px rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #43134e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 6px 30px rgba(140, 26, 155, 0.5),
+                inset 0 -10px 20px rgba(91, 197, 195, 0.3),
+                inset 0 10px 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-en {
+            display: none !important;
+        }
+
+        .lang-it {
+            display: block;
+        }
+
+        span.lang-it {
+            display: inline;
+        }
+
+        p.lang-it {
+            display: block;
+        }
+
+        body.show-english .lang-en {
+            display: block;
+        }
+
+        body.show-english span.lang-en {
+            display: inline;
+        }
+
+        body.show-english p.lang-en {
+            display: block;
+        }
+
+        body.show-english .lang-it {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+    <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
     <div class="floating-shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -246,39 +329,70 @@
         <div class="shape"></div>
     </div>
 
+    <a href="../../../portfolio.html" class="back-link">Back<br>Portfolio</a>
+
     <div class="container">
-        <a href="../../../portfolio.html" class="back-link">← Back to Portfolio</a>
 
         <div class="project-detail">
             <div class="project-header">
                 <h1>push_swap</h1>
-                <p class="project-subtitle">Sorting Algorithms</p>
+                <p class="project-subtitle lang-it">Algoritmi di Ordinamento</p>
+                <p class="project-subtitle lang-en">Sorting Algorithms</p>
             </div>
 
             <div class="project-description">
-                <h3>About This Project</h3>
-                <p>push_swap is an algorithm project that challenges you to sort a stack of integers using a limited set of operations and the minimum number of moves. The goal is to implement an efficient sorting algorithm using two stacks and specific operations like swap, push, and rotate.</p>
-                <p>This project requires deep understanding of sorting algorithms, optimization techniques, and algorithmic complexity. Students must devise strategies to sort any given set of numbers efficiently, often combining multiple sorting algorithms and techniques.</p>
+                <div class="lang-it">
+                    <h3>Informazioni sul Progetto</h3>
+                    <p>push_swap è un progetto algoritmico che ti sfida a ordinare uno stack di interi usando un set limitato di operazioni e il numero minimo di mosse. L'obiettivo è implementare un algoritmo di ordinamento efficiente usando due stack e operazioni specifiche come swap, push e rotate.</p>
+                    <p>Questo progetto richiede una profonda comprensione degli algoritmi di ordinamento, delle tecniche di ottimizzazione e della complessità algoritmica. Gli studenti devono ideare strategie per ordinare efficientemente qualsiasi insieme di numeri, spesso combinando più algoritmi e tecniche di ordinamento.</p>
+                </div>
+                <div class="lang-en">
+                    <h3>About This Project</h3>
+                    <p>push_swap is an algorithm project that challenges you to sort a stack of integers using a limited set of operations and the minimum number of moves. The goal is to implement an efficient sorting algorithm using two stacks and specific operations like swap, push, and rotate.</p>
+                    <p>This project requires deep understanding of sorting algorithms, optimization techniques, and algorithmic complexity. Students must devise strategies to sort any given set of numbers efficiently, often combining multiple sorting algorithms and techniques.</p>
+                </div>
             </div>
 
             <div class="skills-section">
-                <h3>Skills Acquired</h3>
-                <ul class="skills-list">
-                    <li>Algorithm design and optimization</li>
-                    <li>Stack data structure manipulation</li>
-                    <li>Sorting algorithm implementation (radix, quick sort concepts)</li>
-                    <li>Complexity analysis (time and space)</li>
-                    <li>Problem decomposition and strategy planning</li>
-                    <li>Performance optimization techniques</li>
-                    <li>Edge case handling and testing</li>
-                    <li>Algorithmic thinking and efficiency</li>
-                </ul>
+                <div class="lang-it">
+                    <h3>Competenze Acquisite</h3>
+                    <ul class="skills-list">
+                        <li>Progettazione e ottimizzazione di algoritmi</li>
+                        <li>Manipolazione della struttura dati stack</li>
+                        <li>Implementazione di algoritmi di ordinamento (concetti di radix, quick sort)</li>
+                        <li>Analisi della complessità (tempo e spazio)</li>
+                        <li>Decomposizione del problema e pianificazione strategica</li>
+                        <li>Tecniche di ottimizzazione delle prestazioni</li>
+                        <li>Gestione dei casi limite e testing</li>
+                        <li>Pensiero algoritmico ed efficienza</li>
+                    </ul>
+                </div>
+                <div class="lang-en">
+                    <h3>Skills Acquired</h3>
+                    <ul class="skills-list">
+                        <li>Algorithm design and optimization</li>
+                        <li>Stack data structure manipulation</li>
+                        <li>Sorting algorithm implementation (radix, quick sort concepts)</li>
+                        <li>Complexity analysis (time and space)</li>
+                        <li>Problem decomposition and strategy planning</li>
+                        <li>Performance optimization techniques</li>
+                        <li>Edge case handling and testing</li>
+                        <li>Algorithmic thinking and efficiency</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="pdf-container">
-                <p>View project subject PDF</p>
-                <a href="../../../subjects/common_core/milestone_2/Push_swap.pdf" class="btn btn-primary" target="_blank">Open PDF</a>
-                <a href="https://github.com/vhacman/push_swap" class="btn btn-secondary" target="_blank">View on GitHub</a>
+                <p class="lang-it">Visualizza il PDF del progetto</p>
+                <p class="lang-en">View project subject PDF</p>
+                <a href="../../../subjects/common_core/milestone_2/Push_swap.pdf" class="btn btn-primary" target="_blank">
+                    <span class="lang-it">Apri PDF</span>
+                    <span class="lang-en">Open PDF</span>
+                </a>
+                <a href="https://github.com/vhacman/push_swap" class="btn btn-secondary" target="_blank">
+                    <span class="lang-it">Vedi su GitHub</span>
+                    <span class="lang-en">View on GitHub</span>
+                </a>
             </div>
         </div>
     </div>
@@ -286,5 +400,20 @@
     <footer>
         &copy; 2025 Viorica Gabriela Hacman
     </footer>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.lang-toggle');
+
+            if (body.classList.contains('show-english')) {
+                body.classList.remove('show-english');
+                button.textContent = 'EN';
+            } else {
+                body.classList.add('show-english');
+                button.textContent = 'IT';
+            }
+        }
+    </script>
 </body>
 </html>
