@@ -565,6 +565,127 @@
             line-height: 1.6;
             font-size: 0.95rem;
         }
+
+        /* Responsive Design for Mobile */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            .hero {
+                margin-top: 200px;
+                padding: 1rem;
+            }
+
+            .profile-menu {
+                top: -180px;
+            }
+
+            .profile-photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .bubble-trigger {
+                width: 120px;
+                height: 120px;
+                font-size: 1rem;
+            }
+
+            .bubble-popup {
+                min-width: 250px;
+                max-width: 280px;
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .popup-title {
+                font-size: 1.1rem;
+            }
+
+            .popup-text {
+                font-size: 0.85rem;
+            }
+
+            /* Riposizionamento bolle per smartphone */
+            .about-bubble {
+                top: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .passions-bubble {
+                top: 25%;
+                left: 5%;
+            }
+
+            .portfolio-bubble {
+                top: 25%;
+                right: 5%;
+                left: auto;
+            }
+
+            .contact-bubble {
+                bottom: 20%;
+                right: 5%;
+            }
+
+            .social-bubble {
+                bottom: 20%;
+                left: 5%;
+            }
+
+            /* Adattamento popup per mobile */
+            .passions-bubble .bubble-popup,
+            .contact-bubble .bubble-popup,
+            .social-bubble .bubble-popup {
+                bottom: auto;
+                top: 130px;
+                left: 0;
+                right: auto;
+            }
+
+            .portfolio-bubble .bubble-popup {
+                left: auto;
+                right: 0;
+            }
+
+            .mini-bubbles {
+                display: none;
+            }
+
+            footer {
+                bottom: 1rem;
+                font-size: 0.7rem;
+                text-align: center;
+                padding: 0 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .tagline {
+                font-size: 0.9rem;
+            }
+
+            .bubble-trigger {
+                width: 100px;
+                height: 100px;
+                font-size: 0.9rem;
+            }
+
+            .bubble-popup {
+                min-width: 200px;
+                max-width: 220px;
+            }
+        }
     </style>
 </head>
 <body>
