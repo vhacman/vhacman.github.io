@@ -577,81 +577,84 @@
             }
 
             .hero {
-                margin-top: 200px;
+                margin-top: 180px;
                 padding: 1rem;
             }
 
             .profile-menu {
-                top: -180px;
+                top: -160px;
             }
 
             .profile-photo {
-                width: 160px;
-                height: 160px;
+                width: 140px;
+                height: 140px;
             }
 
+            /* Bolle molto più piccole disposte in verticale sulla sinistra */
             .bubble-trigger {
-                width: 120px;
-                height: 120px;
-                font-size: 1rem;
+                width: 70px;
+                height: 70px;
+                font-size: 0.7rem;
+                padding: 5px;
             }
 
             .bubble-popup {
-                min-width: 250px;
-                max-width: 280px;
+                min-width: 220px;
+                max-width: 260px;
                 padding: 1rem;
                 font-size: 0.85rem;
             }
 
             .popup-title {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .popup-text {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
-            /* Riposizionamento bolle per smartphone */
+            /* Disposizione verticale sulla sinistra */
             .about-bubble {
-                top: 5%;
-                left: 50%;
-                transform: translateX(-50%);
+                top: 10%;
+                left: 15px;
+                transform: none;
             }
 
             .passions-bubble {
-                top: 25%;
-                left: 5%;
+                top: calc(10% + 90px);
+                left: 15px;
             }
 
             .portfolio-bubble {
-                top: 25%;
-                right: 5%;
-                left: auto;
-            }
-
-            .contact-bubble {
-                bottom: 20%;
-                right: 5%;
-            }
-
-            .social-bubble {
-                bottom: 20%;
-                left: 5%;
-            }
-
-            /* Adattamento popup per mobile */
-            .passions-bubble .bubble-popup,
-            .contact-bubble .bubble-popup,
-            .social-bubble .bubble-popup {
-                bottom: auto;
-                top: 130px;
-                left: 0;
+                top: calc(10% + 180px);
+                left: 15px;
                 right: auto;
             }
 
-            .portfolio-bubble .bubble-popup {
-                left: auto;
-                right: 0;
+            .contact-bubble {
+                top: calc(10% + 270px);
+                left: 15px;
+                bottom: auto;
+                right: auto;
+            }
+
+            .social-bubble {
+                top: calc(10% + 360px);
+                left: 15px;
+                bottom: auto;
+            }
+
+            /* Popup si aprono a destra delle bolle */
+            .about-bubble .bubble-popup,
+            .passions-bubble .bubble-popup,
+            .portfolio-bubble .bubble-popup,
+            .contact-bubble .bubble-popup,
+            .social-bubble .bubble-popup {
+                top: 50%;
+                bottom: auto;
+                left: 85px;
+                right: auto;
+                transform: translateY(-50%);
             }
 
             .mini-bubbles {
@@ -668,7 +671,7 @@
 
         @media screen and (max-width: 480px) {
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
 
             .tagline {
@@ -676,14 +679,23 @@
             }
 
             .bubble-trigger {
-                width: 100px;
-                height: 100px;
-                font-size: 0.9rem;
+                width: 60px;
+                height: 60px;
+                font-size: 0.65rem;
             }
 
             .bubble-popup {
                 min-width: 200px;
-                max-width: 220px;
+                max-width: 240px;
+            }
+
+            /* Aggiustamento per schermi molto piccoli */
+            .about-bubble .bubble-popup,
+            .passions-bubble .bubble-popup,
+            .portfolio-bubble .bubble-popup,
+            .contact-bubble .bubble-popup,
+            .social-bubble .bubble-popup {
+                left: 75px;
             }
         }
     </style>
