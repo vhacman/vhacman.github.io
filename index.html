@@ -632,29 +632,37 @@
             }
 
             .contact-bubble {
-                top: calc(10% + 270px);
+                top: auto;
+                bottom: 150px;
                 left: 15px;
-                bottom: auto;
                 right: auto;
             }
 
             .social-bubble {
-                top: calc(10% + 360px);
+                top: auto;
+                bottom: 70px;
                 left: 15px;
-                bottom: auto;
             }
 
             /* Popup si aprono a destra delle bolle */
             .about-bubble .bubble-popup,
             .passions-bubble .bubble-popup,
-            .portfolio-bubble .bubble-popup,
-            .contact-bubble .bubble-popup,
-            .social-bubble .bubble-popup {
+            .portfolio-bubble .bubble-popup {
                 top: 50%;
                 bottom: auto;
                 left: 85px;
                 right: auto;
                 transform: translateY(-50%);
+            }
+
+            /* Popup per contact e social si aprono sopra */
+            .contact-bubble .bubble-popup,
+            .social-bubble .bubble-popup {
+                top: auto;
+                bottom: 85px;
+                left: 0;
+                right: auto;
+                transform: none;
             }
 
             .mini-bubbles {
