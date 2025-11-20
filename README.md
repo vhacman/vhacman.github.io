@@ -41,11 +41,6 @@ vhacman.github.io/
     └── milestone_4/       # CPP modules, NetPractice, cub3D
 ```
 
-## visit
-```
-https://vhacman.github.io/
-
-```
 ## Key Sections
 
 ### Home Page
