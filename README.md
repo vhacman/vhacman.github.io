@@ -1,10 +1,6 @@
 # Viorica Gabriela Hacman - Portfolio Website
 
-Personal portfolio website showcasing my journey as a Junior Software Developer and 42 Student.
-
-## About
-
-This is my personal portfolio website built with HTML, CSS, and JavaScript. It features an interactive bubble-based navigation system and showcases my projects, skills, and professional journey.
+Personal portfolio website.
 
 ## Live Website
 
