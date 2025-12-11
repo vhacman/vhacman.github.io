@@ -224,6 +224,9 @@
             padding: 1.2rem;
             transition: all 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
         .project-card:hover {
@@ -310,35 +313,45 @@
         <div class="content-section">
             <h2>🎯 Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-name">MonzaMetro</div>
-                    <div class="project-desc">Complete metro ticket system with OOP design, age-based pricing, and HTML template generation. Features Ticket and Passenger entities with service layer architecture.</div>
-                </div>
+                <a href="projects/brianzataxi.html" class="project-card">
+                    <div class="project-name">BrianzaTaxi</div>
+                    <div class="project-desc">Taxi receipt generator with pricing logic and HTML template generation. Implements fare calculation based on distance, time, and additional services.</div>
+                </a>
 
-                <div class="project-card">
-                    <div class="project-name">SBHotel</div>
-                    <div class="project-desc">Comprehensive hotel management system with booking, cancellation, and cleaning services. Includes date validation, leap year calculation, and refund policies.</div>
-                </div>
+                <a href="projects/brianzatrains.html" class="project-card">
+                    <div class="project-name">BrianzaTrains</div>
+                    <div class="project-desc">Train ticket system with route management, pricing algorithms, and passenger information handling. Features schedule management and ticket validation.</div>
+                </a>
 
-                <div class="project-card">
-                    <div class="project-name">BrianzaTaxiService</div>
-                    <div class="project-desc">Enhanced taxi service with VIP system, user management, and ride history tracking. Service-oriented architecture with dedicated service layers.</div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-name">MuseumTicket</div>
-                    <div class="project-desc">Museum admission system with demographic-based pricing, HTML ticket generation, and input validation utilities.</div>
-                </div>
-
-                <div class="project-card">
+                <a href="projects/developercandidatura.html" class="project-card">
                     <div class="project-name">DeveloperCandidatura</div>
                     <div class="project-desc">Job application scoring system with complex algorithms based on education, experience, and location. Uses LocalDate for age calculation.</div>
-                </div>
+                </a>
 
-                <div class="project-card">
-                    <div class="project-name">ChristmasTime</div>
-                    <div class="project-desc">Collection of themed exercises including "Sette e Mezzo" card game with random card generation and game logic implementation.</div>
-                </div>
+                <a href="projects/mltrains.html" class="project-card">
+                    <div class="project-name">MLTrains</div>
+                    <div class="project-desc">Milano-Lecco train line management system with ticket pricing, route calculation, and passenger service features. Includes file I/O for data persistence.</div>
+                </a>
+
+                <a href="projects/monzametro.html" class="project-card">
+                    <div class="project-name">MonzaMetro</div>
+                    <div class="project-desc">Complete metro ticket system with OOP design, age-based pricing, and HTML template generation. Features Ticket and Passenger entities with service layer architecture.</div>
+                </a>
+
+                <a href="projects/prololocakecomo.html" class="project-card">
+                    <div class="project-name">ProlocoLakeComo</div>
+                    <div class="project-desc">Lake Como tourism management application with tourist information services, event scheduling, and promotional content generation.</div>
+                </a>
+
+                <a href="projects/sbhotel.html" class="project-card">
+                    <div class="project-name">SBHotel</div>
+                    <div class="project-desc">Comprehensive hotel management system with booking, cancellation, and cleaning services. Includes date validation, leap year calculation, and refund policies.</div>
+                </a>
+
+                <a href="projects/villamelzi.html" class="project-card">
+                    <div class="project-name">VillaMelzi</div>
+                    <div class="project-desc">Villa tour and booking management system with visit scheduling, pricing management, and customer information handling.</div>
+                </a>
             </div>
         </div>
 
@@ -401,17 +414,16 @@
 
         <div class="content-section">
             <h2>👨‍💻 Repository Structure</h2>
-            <p>The course is organized into multiple modules, each containing dedicated packages:</p>
+            <p>The course projects are organized by domain and functionality:</p>
             <ul>
-                <li><code>Examples/</code> - Basic examples organized by topic (demo, food, geometry, housing, trips)</li>
-                <li><code>PrintLabel/</code> - Label generation with file I/O and templates</li>
-                <li><code>BrianzaTaxi/</code> - Taxi receipt generator with pricing logic</li>
-                <li><code>BrianzaTaxiService/</code> - Enhanced taxi service with VIP features</li>
-                <li><code>MonzaMetro/</code> - Metro ticket system with OOP design</li>
-                <li><code>SBHotel/</code> - Complete hotel management system</li>
-                <li><code>ChristmasTime/</code> - Themed programming exercises</li>
-                <li><code>Modulo4/</code> - Loop exercises and bill payment manager</li>
-                <li><code>Recap/</code> - Review lessons covering fundamental concepts</li>
+                <li><code>BrianzaTaxi/</code> - Taxi receipt generator with pricing logic and template system</li>
+                <li><code>BrianzaTrains/</code> - Train ticket system with route and schedule management</li>
+                <li><code>DeveloperCandidatura/</code> - Job application scoring with complex algorithms</li>
+                <li><code>MLTrains/</code> - Milano-Lecco train line management with file I/O</li>
+                <li><code>MonzaMetro/</code> - Metro ticket system with OOP design and service layers</li>
+                <li><code>ProlocoLakeComo/</code> - Tourism management and event scheduling application</li>
+                <li><code>SBHotel/</code> - Complete hotel management with booking and cleaning services</li>
+                <li><code>VillaMelzi/</code> - Villa tour booking and visit scheduling system</li>
             </ul>
         </div>
 

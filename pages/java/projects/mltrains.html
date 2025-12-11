@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4DJM255QCH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4DJM255QCH');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLTrains - Java Project</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #c2a6da;
+            color: #000000;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(140, 26, 155, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(91, 197, 195, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(180, 58, 188, 0.3));
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 20px rgba(140, 26, 155, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.7rem;
+            color: #43134e;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(140, 26, 155, 0.5); }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #43134e, #8c1a9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+        h2 { font-size: 1.8rem; font-weight: 700; color: #43134e; margin: 2rem 0 1rem 0; }
+        h3 { font-size: 1.3rem; font-weight: 600; color: #8c1a9b; margin: 1.5rem 0 0.8rem 0; }
+        .subtitle { font-size: 1.2rem; color: #2a082e; margin-bottom: 2rem; text-align: center; }
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        ul { margin-left: 1.5rem; margin-top: 0.5rem; }
+        li { margin: 0.5rem 0; line-height: 1.6; }
+        code { background: rgba(0, 0, 0, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: 'Courier New', monospace; }
+        strong { color: #43134e; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .feature-box { background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(140, 26, 155, 0.3); border-radius: 8px; padding: 1rem; }
+        .github-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #b43abc, #5bc5c3);
+            color: #0a0a0a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 1rem auto;
+            display: block;
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+        .github-link:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0, 186, 188, 0.3); }
+        @media screen and (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-link">Back<br>Java</a>
+    <div class="container">
+        <h1>MLTrains</h1>
+        <p class="subtitle">Sistema Gestione Linea Milano-Lecco</p>
+
+        <div class="content-section">
+            <h2>📋 Descrizione Progetto</h2>
+            <p>MLTrains è un sistema avanzato di biglietteria per la linea ferroviaria Milano-Lecco con stazioni intermedie a Monza e Osnago. Include generazione batch di biglietti multipli, validazione complessa e sistema di template HTML.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>✨ Caratteristiche Principali</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h3>🎫 Batch Generation</h3>
+                    <p>Possibilità di generare <strong>multipli biglietti</strong> in una sessione con loop continuo</p>
+                </div>
+                <div class="feature-box">
+                    <h3>✅ Validazione Avanzata</h3>
+                    <p>Controllo stazioni esistenti e destinazione diversa dalla partenza con recupero da errori</p>
+                </div>
+                <div class="feature-box">
+                    <h3>💰 Pricing Dinamico</h3>
+                    <p>Classe 1: €0.20/km<br>Classe 2: €0.15/km</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📄 Template HTML</h3>
+                    <p>Generazione biglietti con sistema template e naming personalizzato</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🚉 Stazioni e Distanze</h2>
+            <ul>
+                <li><strong>Milano ↔ Monza:</strong> 15 km</li>
+                <li><strong>Milano ↔ Osnago:</strong> 35 km</li>
+                <li><strong>Milano ↔ Lecco:</strong> 65 km</li>
+                <li><strong>Monza ↔ Osnago:</strong> 20 km</li>
+                <li><strong>Monza ↔ Lecco:</strong> 50 km</li>
+                <li><strong>Osnago ↔ Lecco:</strong> 30 km</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>💻 Tecnologie e Pattern</h2>
+            <ul>
+                <li><strong>Nested Switch Statements:</strong> Lookup distanze bidrezionale</li>
+                <li><strong>Multi-Level Validation Loops:</strong> Do-while per input robusto</li>
+                <li><strong>Template-Based HTML:</strong> Placeholder replacement system</li>
+                <li><strong>Session Management:</strong> Continuazione basata su input utente</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>📁 Package Structure</h2>
+            <code>
+                com.generation.bt.main<br>
+                └── PrintTicket<br>
+                com.generation.library<br>
+                ├── Console<br>
+                ├── FileWriter<br>
+                └── Template
+            </code>
+        </div>
+
+        <a href="https://github.com/vhacman/GenerationStudyJavaCourse/tree/main/MLTrains" target="_blank" class="github-link">
+            🔗 Visualizza Codice su GitHub
+        </a>
+    </div>
+</body>
+</html>
